@@ -15,7 +15,7 @@ class UserController extends Controller
         return view('registration');
     }
 
-    public function create(Request $request){
+    public function register(Request $request){
         $this->validate($request, [
             'fullName' => 'required|string|min:3|max:40',
             'email' => 'required|string||regex:/(.*)@gmail\.com/',
@@ -34,21 +34,21 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'phoneNumber' => $request->phoneNumber
           ]);
-          return redirect('/')->with('success', 'User registered!');
+          return redirect('/loginForm')->with('success', 'User registered!');
     }
     
-    public function login(){
+    public function loginForm(){
         return view('login');
     }
 
-    public function logedin(Request $request){
+    public function login(Request $request){
         $user = User::where('email', '=', $request->email)->first();
         if($user && Hash::check($request->password, $user->password)){
             Auth::login($user);
             if(Auth::check()){
                 return redirect('/');
             }else{
-                return redirect('/loginform');
+                return redirect('/loginForm');
             }
         }else{
             return back()->withErrors([
@@ -59,6 +59,6 @@ class UserController extends Controller
     public function logout(){
         session::flush();
         Auth::logout();
-        return redirect('/');
+        return redirect('/loginForm')->with('success', 'loged out successfully!');
     }
 }

@@ -37,11 +37,11 @@ Route::middleware(['auth'])->group(function(){
     });
 });
 
-Route::controller(UserController::class)->group(function(){
-    Route::get('/registerform', 'registerForm')->name('register');
-    Route::post('/registered', 'create')->name('registered');
-    Route::get('/logIn', 'logIn')->name('logIn');
-    Route::post('/loggedIn', 'loggedIn')->name('loggedIn');
-    Route::post('/logOut', 'logOut')->name('logOut');
-});
 
+// Route::controller(UserController::class)->group(function(){
+//     Route::get('/registerForm', 'registerForm')->name('registerForm');
+//     Route::post('/register', 'register')->name('register');
+//     Route::get('/loginForm', 'loginForm')->name('loginForm');
+//     Route::post('/login', 'login')->name('login');
+//     Route::post('/logout', 'logout')->name('logout');
+// });

@@ -27,9 +27,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{route('createcategoryform')}}">Create Category</a>
               </li>
-              <form action="{{route('logOut')}}" method="POST">
+              <form action="{{route('logout')}}" method="POST">
                 @csrf
-                <button class="btn btn-danger">Log out</button>
+                <button class="btn btn-danger">Log Out</button>
               </form>
             </ul>
           </div>

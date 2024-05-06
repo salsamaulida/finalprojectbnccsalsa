@@ -18,8 +18,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 button">
-              <a href="{{route('register')}}" class="btn btn-light">Register</a>
-              <a href="{{route('logIn')}}" class="btn btn-secondary">Log In</a>
+              <a href="{{route('registerForm')}}" class="btn btn-light">Register</a>
+              <a href="{{route('loginForm')}}" class="btn btn-secondary">Log In</a>
             </ul>
           </div>
         </div>
@@ -28,7 +28,7 @@
     @if(session()->has('success'))
     {{session()->get('success')}}
     @endif
-    <form action="{{route('loggedIn')}}" method="POST" class="content">
+    <form action="{{route('login')}}" method="POST" class="content">
         @csrf
     <h2>Log In</h2>
         <div class="mb-3">

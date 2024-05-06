@@ -21,15 +21,18 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">Catalog</a>
               </li>
+
+              @if(Auth::user() && Auth::user()->isAdmin == '1')
               <li class="nav-item">
                 <a class="nav-link" href="{{route('viewform')}}">Add Item</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('createcategoryform')}}">Create Category</a>
               </li>
-              <form action="{{route('logOut')}}" method="POST">
+            @endif
+              <form action="{{route('logout')}}" method="POST">
                 @csrf
-                <button class="btn btn-danger">Log out</button>
+                <button class="btn btn-danger">Log Out</button>
               </form>
             </ul>
           </div>
@@ -45,13 +48,16 @@
              <p class="card-text">Rp.{{$skincare->price}},00</p>
              <p class="card-text">{{$skincare->quantity}} pcs</p>
              <p style="font-weight: 500; color:blue">Category : {{$skincare->category->category}}</p>
+
+             @if(Auth::user() && Auth::user()->isAdmin == '1')
              <a href="{{route('editform', ['id' => $skincare->id])}}" class="btn btn-primary">Edit</a>   
              <form action="{{route('delete', ['id' => $skincare->id])}}" method="POST">
               @csrf
               @method('DELETE')
               <button class="btn btn-danger">Delete</button>
              </form>
-           
+             @endif
+             <button class="btn btn-primary">Add to Invoices</button>
             </div>
           </div>
           @endforeach

@@ -19,7 +19,14 @@ class UserSeeder extends Seeder
             'email' => 'salsamaulida@gmail.com',
             'password' => Hash::make('salsa321'),
             'phoneNumber' => '088123456789',
-            'isAdmin' => true
+            'isAdmin' => '1'
+        ]);
+        DB::table('users')->insert([
+            'fullName' => 'Renjana Manohara',
+            'email' => 'renjana@gmail.com',
+            'password' => Hash::make('renjana321'),
+            'phoneNumber' => '08213456789',
+            'isAdmin' => '0'
         ]);
     }
 }
