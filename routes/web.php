@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SkincareController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\InvoiceController;
 
 
 /*
@@ -37,6 +38,12 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/', [SkincareController::class, 'view'])->name('viewall');
+    Route::get('/pageinvoice/{id}', [InvoiceController::class, 'viewpage'])->name('pageinvoice');
+    Route::get('/invoice.create/{id}', [InvoiceController::class, 'create'])->name('invoice.create');
+    // Route::controller(InvoiceController::class)->group(function(){
+    //     Route::get('/pageinvoice/{id}', 'viewpage')->name('pageinvoice');
+    //     Route::post('/invoice.create/{id}', 'create')->name('invoice.create');
+    // });
     Route::prefix('admin')->middleware(['isAdmin'])->group(function(){
         Route::controller(SkincareController::class)->group(function(){
             Route::get('/', 'view')->name('viewall');

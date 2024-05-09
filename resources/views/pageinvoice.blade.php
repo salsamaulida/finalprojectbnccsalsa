@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{asset('css/view.css')}}">
-    <title>ChipiChapa</title>
+    <title>Create Invoice</title>
 </head>
 <body>
 
@@ -39,33 +38,18 @@
         </div>
     </nav>
 
-    <div class="content">
-      @foreach ($semuaskincare as $skincare)
-        <div class="card" style="width: 18rem;">
-           <img src="{{asset('/storage/itemimage/'.$skincare->image)}}" class="card-img-top" alt="foto.barang">
-          <div class="card-body">
-             <h5 class="card-title">{{$skincare->name}}</h5>
-             <p class="card-text">Rp.{{$skincare->price}},00</p>
-             <p class="card-text">{{$skincare->stock}} pcs</p>
-             <p style="font-weight: 500; color:blue">Category : {{$skincare->category->category}}</p>
-
-             @if(Auth::user() && Auth::user()->isAdmin == '1')
-             <a href="{{route('editform', ['id' => $skincare->id])}}" class="btn btn-primary">Edit</a>   
-             <form action="{{route('delete', ['id' => $skincare->id])}}" method="POST">
-              @csrf
-              @method('DELETE')
-              <button class="btn btn-danger">Delete</button>
-             </form>
-             @endif
-
-             @if(Auth::user() && Auth::user()->isAdmin == '0')
-              <a href="{{route('pageinvoice', ['id' => $skincare->id])}}" class="btn btn-primary">Add to Invoice</a>
-             @endif
-
-            </div>
-          </div>
-          @endforeach
-    </div>
+    <form action="{{route('invoice.store')}}" method="post">
+        @csrf
+        <select name="skincares[0][id]">
+            @foreach($skincares as $skincare)
+            <option value="{{ $skincare->id }}">{{ $skincare->name }} - {{ $skincare->price }}</option>
+            @endforeach
+        </select>
+        <input type="number" name="skincare[0][stock]" placeholder="Jumlah Barang">
+        <input type="text" name="shippingAddress" placeholder="Alamat Pengiriman">
+        <input type="text" name="postalCode" placeholder="Kode Pos">
+        <button type="submit">Simpan</button>
+    </form>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>

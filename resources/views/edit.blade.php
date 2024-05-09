@@ -53,8 +53,8 @@
         <div class="mb-3">
     
        <div class="mb-3">
-           <label for="exampleFormControlInput1" class="form-label">Jumlah Barang</label>
-          <input name="quantity" type="number" class="form-control" id="exampleFormControlInput1" placeholder="" value={{$skincare->quantity}}>
+           <label for="exampleFormControlInput1" class="form-label">Stok Barang</label>
+          <input name="stock" type="number" class="form-control" id="exampleFormControlInput1" placeholder="" value={{$skincare->stock}}>
        </div>
        <div class="mb-3">
 

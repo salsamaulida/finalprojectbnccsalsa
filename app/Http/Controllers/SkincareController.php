@@ -24,7 +24,7 @@ class SkincareController extends Controller
     $this->validate($request, [
       'name' => 'required|string|min:5|max:80',
       'price' => 'required|integer',
-      'quantity' => 'required|integer',
+      'stock' => 'required|integer',
       'itempicture' => 'mimes:jpg, jpeg, png'
     ]);
 
@@ -39,7 +39,7 @@ class SkincareController extends Controller
     Skincare::create([
       'name' => $request->name,
       'price' => $request->price,
-      'quantity' => $request->quantity,
+      'stock' => $request->stock,
       'category_id' => $request->category_id,
       'image' => $image_name
     ]);
@@ -55,7 +55,7 @@ class SkincareController extends Controller
     $this->validate($request, [
       'name' => 'required|string|min:5|max:80',
       'price' => 'required|numeric',
-      'quantity' => 'required|numeric',
+      'stock' => 'required|numeric',
       'itempicture' => 'mimes:jpg, jpeg, png'
     ]);
 
@@ -70,7 +70,7 @@ class SkincareController extends Controller
     $skincare = Skincare::findOrfail($id)->update([
       'name' => $request->name,
       'price' => $request->price,
-      'quantity' => $request->quantity,
+      'stock' => $request->stock,
       'category_id' => $request->category_id,
       'image' => $image_name
     ]);

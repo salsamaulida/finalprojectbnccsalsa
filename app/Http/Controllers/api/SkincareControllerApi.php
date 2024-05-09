@@ -20,7 +20,7 @@ class SkincareControllerApi extends Controller
         $validate = Validator::make($request->all(), [
             'name' => 'required|string|min:5|max:80',
             'price' => 'required|integer',
-            'quantity' => 'required|integer'
+            'stock' => 'required|integer'
         ]);
 
         if($validate->fails()){
@@ -29,7 +29,7 @@ class SkincareControllerApi extends Controller
             $skincare = Skincare::create([
                 'name' => $request->name,
                 'price' => $request->price,
-                'quantity' => $request->quantity,
+                'stock' => $request->stock,
                 'category_id' => $request->category_id,
                 'image' => $request->itempicture
               ]);

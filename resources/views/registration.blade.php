@@ -39,7 +39,7 @@
             <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="password">
             
             <label for="inputPassword5" class="form-label">Konfirmasi Password</label>
-            <input type="confirmPassword" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="confirmPassword">
+            <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="confirmPassword">
     
             <label for="inputPassword5" class="form-label">Nomor Handphone</label>
             <input type="text" id="inputPassword5" class="form-control" name="phoneNumber">

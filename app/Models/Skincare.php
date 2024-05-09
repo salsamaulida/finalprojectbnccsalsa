@@ -13,7 +13,7 @@ class Skincare extends Model
     protected $fillable = [
         'name',
         'price',
-        'quantity',
+        'stock',
         'category_id',
         'image'
     ];
